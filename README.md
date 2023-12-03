@@ -1,4 +1,4 @@
-# CME538 Fall 2023 data_detectives Big Project
+# CME538 Fall 2023 Data Detectives Big Project
 
 ## Background
 According to [poll conducted by Forum Research in 2017](https://poll.forumresearch.com/m/post/2660/most-believe-roads-safe-for-pedestrians-not-for-cyclists/), 50% of the respondents considered Toronto unsafe for cyclists. Out of those who bikeed to work, 78% considered the city to be unsafe for cyclists.
