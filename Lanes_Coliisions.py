@@ -13,6 +13,7 @@ bike_lanes_gdf = gpd.GeoDataFrame(
 )
 
 collisions = pd.read_csv('Cyclists.csv')
+collisions = collisions[collisions['YEAR'] >= 2018]
 
 # Data cleaning
 # bike_lanes_gdf['name'] = bike_lanes_gdf['name'].str.extract(r'([a-zA-Z\s]+)', expand=False).str.strip()
@@ -39,33 +40,27 @@ geometry_collisions = [Point(xy) for xy in zip(collisions['LONGITUDE'], collisio
 gdf_collisions = gpd.GeoDataFrame(collisions, geometry=geometry_collisions, crs="EPSG:4326")
 gdf_collisions['geometry_coordinates'] = gdf_collisions['geometry'].apply(get_coordinates)
 
-# Clean rows containing NaN in geometry_coordinates
-gdf_collisions_cleaned = gdf_collisions.dropna(subset=['geometry_coordinates'])
+gdf_collisions.to_csv('gdf_collisions_cleaned.csv', index=False)
 
 # Create BallTree for bike lanes
 tree = BallTree(bike_lanes_gdf_cleaned['geometry_coordinates'].tolist(), metric='haversine')
 
 # Find the distance to the nearest bike lane for each collision
-distances, indices = tree.query(gdf_collisions_cleaned['geometry_coordinates'].tolist(), k=1)
-gdf_collisions_cleaned['nearest_bike_lane_distance'] = distances
+distances, indices = tree.query(gdf_collisions['geometry_coordinates'].tolist(), k=1)
+# gdf_collisions['nearest_bike_lane_code'] = indices
 
-# # Merge bike lane information to the collisions DataFrame
-# merged_collisions = gpd.sjoin(gdf_collisions, bike_lanes_gdf_cleaned, how="left", op="intersects")
-#
-# # Print the resulting DataFrame
-# print(merged_collisions[['ACCNUM', 'nearest_bike_lane_distance', 'name']])
+# Get the corresponding bike lane information
+nearest_bike_lane_info = bike_lanes_gdf_cleaned.iloc[indices.flatten()]
 
-# # Save the merged data to a new CSV file
-# merged_collisions.to_csv('merged_collisions.csv', index=False)
+# Reset the index of both dataframes
+collisions.reset_index(drop=True, inplace=True)
+nearest_bike_lane_info.reset_index(drop=True, inplace=True)
 
-# 创建一个字典，将每个自行车道的geometry坐标和名称关联
-bike_lane_dict = dict(zip(bike_lanes_gdf_cleaned['geometry_coordinates'], bike_lanes_gdf_cleaned['code']))
+# Merge the information back to the original collisions DataFrame
+collisions_with_distances = pd.concat([collisions, nearest_bike_lane_info[['code', 'name']]], axis=1)
 
-# 通过最近的自行车道的geometry坐标查找名称
-gdf_collisions_cleaned['nearest_bike_lane_code'] = gdf_collisions_cleaned['geometry_coordinates'].map(bike_lane_dict)
+# Save the merged data to a new CSV file
+collisions_with_distances.to_csv('collisions_with_distances.csv', index=False)
 
-# 打印包含最近自行车道名称的结果DataFrame
-print(gdf_collisions_cleaned[['ACCNUM', 'nearest_bike_lane_distance', 'nearest_bike_lane_code']])
-
-# 将结果保存为CSV文件
-gdf_collisions_cleaned.to_csv('collisions_with_distances.csv', index=False)
+collisions_and_bikelanes = collisions_with_distances[['ACCNUM', 'name', 'code']]
+collisions_and_bikelanes.to_csv('collisions_and_bikelanes.csv', index=False)

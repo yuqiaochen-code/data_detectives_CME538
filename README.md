@@ -1,30 +1,43 @@
-# CME538 Fall 2023 data_detectives Big Project
+# CME538 Fall 2023 Data Detectives Big Project
 
 ## Objective 
-* Geospatial analysis of collision counts with respect to traffic signals and street lights – where to implement more lights and traffic signals to improve rider safety
-* Analysis of trips made from/to the stations with respect to the capacity of the stations – stations that need to increase capacity
-
-## Background
-The [Toronto Parking Authority (TPA)](https://parking.greenp.com/) have initiated a '[Four-Year_Growth-Plan](https://www.toronto.ca/legdocs/mmis/2022/pa/bgrd/backgroundfile-229602.pdf)' in 2022, aiming to accelarate the expansion of Toronto Bike Share servide in the coming four years. The Four-Year-Growth-Plan includes strategies to expand to upwards of 1,000 stations and 10,000 bikes, including 2,000 e-bikes, by 2025. 
-
-As of 2022, Toronto was divided into 140 social planning neighborhoods by the city government. Many of these neighbourhoods have little to no direct access to Bike Share: 
-  * 67 neighborhoods with 0 Bike Share Stations. 
-  * 1.4 million population with 0 stations.
-    
-As for cycling infrastructures, Toronto has 1,000 km of cycling infrastructure, but the majority is in downtown area or within parks. Little on-road infrastructure exists outside downtown, making it difficult to cycle between suburban locations quickly and safely.
-According to an analysis conducted by WSP, 36 indicators was taken into considerations to determine suitable ‘hotspots’ for implementations of new Bike Share station location. Some of the indicators include: population and employment densities, bikeability (i.e. cycling infrastructure and topography), and transportation mode choice (i.e. mode shares and proximity to significant walking, cycling, and transit routes).
-
+* Temporal analysis of trends and patterns of collisions involving cyclists in Toronto;
+* Geospatial exploration of collisions involving cyclists to reveal spatial distributions and correlations in Toronto;
+* Analysis of collision patterns concerning Toronto neighborhood characteristics for correlations or trends;
+* Analysis of weather conditions to determine instances where collision likelihood increases; and
+* Assessment of the relationship between cycling infrastructures and collision occurrences to understand potential influences
 
 ## Dataset
 
-* Toronto Bike Share Ridership Data (2018-2023):[Toronto Open Data Portal](https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/)
-* Toronto Bike Share Stations Location Data : [Json file URL](https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information)
-* [Toronto Neighbourhoods Map](https://github.com/yuqiaochen-code/data_detectives_CME538/blob/66e05653a912a5a1b7ce3b187a17b586e546442e/toronto_neighbourhoods.shp)
-* Toronto Topographic Mapping -- Poles: [Toronto Open Data Portal](https://open.toronto.ca/dataset/topographic-mapping-poles/)
-* Toronto Collision Map: [Toronto Police Service Public Safety Data Portal](https://data.torontopolice.on.ca/pages/cyclists)
-  
-## Results and key findings
-Medium article link:
+* **Toronto Collision Map** is provided by [Toronto Police Service Public Safety Data Portal](https://data.torontopolice.on.ca/pages/cyclists) and contained traffic-related serious and fatal collisions involving cyclists from 2006 to 2022. Columns within the dataset are used in this data analysis are listed as follows.
+  * `INDEX_`: unique identifier of each collision
+  * `DATE`: date of collision. Note this is not in datetime format, and needed to be converted to datetime format before conducting analysis.  
+  * `DISTRICT`: district where the collision happened, including Scarborough, Toronto and East York, North York, and Etobicoke York)
+  * `ACCLOC`: location where the collisions occurred.
+  * `TRAFFCTL`: types of traffic controls present at collisions (e.g. traffic signals, traffic controller, stop sign, etc.)
+  * `LIGHT`: light conditions at the scene of collisions
+  * `INVAGE`: age groups of party involved
+  * `INVTYPE`: involvement type
+  * `NEIGHBOURH`: neighbourhood where the collisions happened
+  * `geometry`: latitude and longitude where the collisions happened. This column is used for plotting maps in this data analysis.
 
-## Packages and document
-### third level heading
+Note: There are two columns in the cyclist collision data, `INDEX_` (unique identifier) and `ACCNUM` (accident number). According to the data documentation (link), account numbers could be used repeatedly year after year and are not unique, `INDEX_` was used for grouping by certain columns and counting the number of collisions for each group.
+
+* [Toronto Neighbourhoods Map](https://github.com/yuqiaochen-code/data_detectives_CME538/blob/66e05653a912a5a1b7ce3b187a17b586e546442e/toronto_neighbourhoods.shp) This is a shp file and can be plotted directly using its `geometry` column. Only `FIELD_8` and `geometry` columns are used in this geometry. `FIELD_8` is the name of the neighbourhoods.
+  
+* Toronto neighbourhoods profiles data provided by Toronto Open Data portal: [Neighbourhood profiles](https://open.toronto.ca/dataset/neighbourhood-profiles/) This dataset come from Census of Population held across Canada every 5 years and has data about age and sex, families and households, language, immigration and internal migration, ethnocultural diversity, Aboriginal peoples, housing, education, income, and labour.
+
+  This is an Excel file and the first column of the dataframe should be the column names. Therefore, the dataframe was transposed and adjusted before analysis. Columns used from this dataset in this analysis are `Neighbourhood Name` and `Total - Age groups of the population - 25% sample data`, which the one fourth of the populations.
+  
+
+* Toronto weather data, obtained from Government of Canada website: [Toronto historial weather data](https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459)
+* [Cycling Network](https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways
+
+
+## Results and key findings
+* Data analysis notebooks:
+* Figures and tables: 
+* Medium article link:
+
+## Future directions
+
