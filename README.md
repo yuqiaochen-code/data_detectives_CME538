@@ -31,11 +31,11 @@ Note: There are two columns in the cyclist collision data, `INDEX_` (unique iden
   
 
 * Toronto weather data, obtained from Government of Canada website: [Toronto historial weather data](https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459)
-* **[Cycling Network]**(https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. The dataset is a shp file, after transferring to a geopandas dataframe, columns the dataset contains are listed below:
-* `name`: name of the street/road/avenue the bikelane located at
-* `route_type`: the type of the route. in this project, they are all 'bike lane'
-* `length`: the length of the bike lane
-* `geometry`: geometry data, containing the grometric information of the bike lane. LINESTRING
+ * * **[Cycling Network]**(https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. The dataset is a shp file, after transferring to a geopandas dataframe, columns the dataset contains are listed below:
+ * `name`: name of the street/road/avenue the bikelane located at
+ * `route_type`: the type of the route. in this project, they are all 'bike lane'
+ * `length`: the length of the bike lane
+ * `geometry`: geometry data, containing the grometric information of the bike lane. LINESTRING
 
 
 ## Results and key findings
