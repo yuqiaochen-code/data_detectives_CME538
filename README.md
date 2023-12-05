@@ -33,7 +33,7 @@ Note: There are two columns in the cyclist collision data, `INDEX_` (unique iden
 
   This is an Excel file and the first column of the dataframe should be the column names. Therefore, the dataframe was transposed and adjusted before analysis. Columns used from this dataset in this analysis are `Neighbourhood Name` and `Total - Age groups of the population - 25% sample data`, which the one fourth of the populations. In this analysis, total population is used in calculations. Therefore, the numbers in the column `Total - Age groups of the population - 25% sample data` are multiplied by four.
   
-* Toronto weather data, obtained from Government of Canada website: [Toronto historial weather data](https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459) Columns within the dataset are used in this data analysis are listed as follows.
+* Toronto weather data, obtained from Government of Canada website: [Toronto historial weather data].(https://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51459). Columns within the dataset are used in this data analysis are listed as follows.
   * `Date/Time`: the year, month, day and time when it occurred
   * `Temp (°C)`: recorded temperature
   * `Dew Point Temp (°C)`: Dew Point Temperature (°C) is a meteorological parameter that represents the temperature at which air becomes saturated with moisture and dew begins to form.
