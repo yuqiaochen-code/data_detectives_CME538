@@ -50,7 +50,7 @@ Note: There are two columns in the cyclist collision data, `INDEX_` (unique iden
 
 
 
- * * **[Cycling Network]**(https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. The dataset is a shp file, after transferring to a geopandas dataframe, columns the dataset contains are listed below:
+ * **[Cycling Network]**(https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. The dataset is a shp file, after transferring to a geopandas dataframe, columns the dataset contains are listed below:
  * `name`: name of the street/road/avenue the bikelane located at
  * `route_type`: the type of the route. in this project, they are all 'bike lane'
  * `length`: the length of the bike lane
