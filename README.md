@@ -45,6 +45,8 @@ Note: There are two columns in the cyclist collision data, `INDEX_` (unique iden
   * `Wind Chill`: quantify the cooling effect of the wind on the perceived temperature.
   * `Precip. Amount (mm)`: the amount of precipitation.
   * `Weather`: indicates different weather conditions.
+ 
+    
 
 
 
