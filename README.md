@@ -11,7 +11,8 @@
 
 * **Toronto Collision Map** is provided by [Toronto Police Service Public Safety Data Portal](https://data.torontopolice.on.ca/pages/cyclists) and contained traffic-related serious and fatal collisions involving cyclists from 2006 to 2022. Columns within the dataset are used in this data analysis are listed as follows.
   * `INDEX_`: unique identifier of each collision
-  * `DATE`: date of collision. Note this is not in datetime format, and needed to be converted to datetime format before conducting analysis.  
+  * `DATE`: date of collision. Note this is not in datetime format, and needed to be converted to datetime format before conducting analysis.
+  * `TIME`: time Collision Occurred
   * `DISTRICT`: district where the collision happened, including Scarborough, Toronto and East York, North York, and Etobicoke York)
   * `ACCLOC`: location where the collisions occurred.
   * `TRAFFCTL`: types of traffic controls present at collisions (e.g. traffic signals, traffic controller, stop sign, etc.)
@@ -20,6 +21,7 @@
   * `INVTYPE`: involvement type
   * `NEIGHBOURH`: neighbourhood where the collisions happened
   * `geometry`: latitude and longitude where the collisions happened. This column is used for plotting maps in this data analysis.
+  * `INJURY`: Severity of Injury
 
 Note: There are two columns in the cyclist collision data, `INDEX_` (unique identifier) and `ACCNUM` (accident number). According to the data documentation (link), account numbers could be used repeatedly year after year and are not unique, `INDEX_` was used for grouping by certain columns and counting the number of collisions for each group.
 
