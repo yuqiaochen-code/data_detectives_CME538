@@ -22,8 +22,8 @@
   * `NEIGHBOURH`: neighbourhood where the collisions happened
   * `geometry`: latitude and longitude where the collisions happened. This column is used for plotting maps in this data analysis.
   * `INJURY`: Severity of Injury
-
-Note: There are two columns in the cyclist collision data, `INDEX_` (unique identifier) and `ACCNUM` (accident number). According to the data documentation (link), account numbers could be used repeatedly year after year and are not unique, `INDEX_` was used for grouping by certain columns and counting the number of collisions for each group.
+  
+  Note: There are two columns in the cyclist collision data, `INDEX_` (unique identifier) and `ACCNUM` (accident number). According to the data documentation (link), account numbers could be used repeatedly year after year and are not unique, `INDEX_` was used for grouping by certain columns and counting the number of collisions for each group.
 
 * **[Toronto Neighbourhoods Map]**(https://github.com/yuqiaochen-code/data_detectives_CME538/blob/66e05653a912a5a1b7ce3b187a17b586e546442e/toronto_neighbourhoods.shp) This is a shp file and can be plotted directly using its `geometry` column. Only `FIELD_8` and `geometry` columns are used in this geometry. `FIELD_8` is the name of the neighbourhoods.
   The default geographic crs is `epsg:4326` in this dataset.
@@ -45,12 +45,12 @@ Note: There are two columns in the cyclist collision data, `INDEX_` (unique iden
   * `Wind Chill`: quantify the cooling effect of the wind on the perceived temperature.
   * `Precip. Amount (mm)`: the amount of precipitation.
   * `Weather`: indicates different weather conditions.
-  
-`Date/Time` column needs to be converted to datetime variable and localized to 'EST' timezone.
 
-There are a number of columns containing only the word Flag. These columns can be removed since they only contain overlapping information.
+    `Date/Time` column needs to be converted to datetime variable and localized to 'EST' timezone.
 
-There are columns that contain `NaN` or `M`. According to Environment and Climate Change Canada, `M` represents 'missing', which means the data is unretrievable or unavailable. The missing values in `Hmdx` and `Wind Chill` should not be modified because the `Hmdx` values are only reported if: (1) air temperature is greater than or equal to 20 degrees celsius and, (2) the `Hmdx` is at least 1 degree greater than the air temperature. Similarily, wind chill is only calculated if the air temperature is less than or equal to 0 degrees celsius. Additionally, the Weather column is the visual observation of the weather environment and appears to be important. The missing values in this column means a clear weather. So missing values should be assigned with Clear.
+    There are a number of columns containing only the word Flag. These columns can be removed since they only contain overlapping information.
+
+    There are columns that contain `NaN` or `M`. According to Environment and Climate Change Canada, `M` represents 'missing', which means the data is unretrievable or unavailable. The missing values in `Hmdx` and `Wind Chill` should not be modified because the `Hmdx` values are only reported if: (1) air temperature is greater than or equal to 20 degrees celsius and, (2) the `Hmdx` is at least 1 degree greater than the air temperature. Similarily, wind chill is only calculated if the air temperature is less than or equal to 0 degrees celsius. Additionally, the Weather column is the visual observation of the weather environment and appears to be important. The missing values in this column means a clear weather. So missing values should be assigned with Clear.
 The weather data was sampled every hour, so it is reasonable to input missing values based on the time-adjacent valid observations, except columns `Hmdx`, `Wind Chill`, and `Weather`. All other columns will have missing values filled using linear interpolation between valid observations.
 
  * **[Cycling Network]**(https://open.toronto.ca/dataset/cycling-network/): The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. There is a column in this dataset called `route_type`. Only data with bike lane as `route_type` were used for this analysis. The dataset is a `shp` file. Columns in the dataset are listed as follows:
