@@ -54,10 +54,10 @@
 The weather data was sampled every hour, so it is reasonable to input missing values based on the time-adjacent valid observations, except columns `Hmdx`, `Wind Chill`, and `Weather`. All other columns will have missing values filled using linear interpolation between valid observations.
 
  * **[Cycling Network](https://open.toronto.ca/dataset/cycling-network/)**: The Toronto bikeways dataset illustrates the existing cycling network across the city, including both shared and dedicated bikeways. There is a column in this dataset called `route_type`. Only data with bike lane as `route_type` were used for this analysis. The dataset is a `shp` file. Columns in the dataset are listed as follows:
- * `name`: name of the street/road/avenue the bikelane located at
- * `route_type`: the type of the route. in this project, they are all 'bike lane'
- * `length`: the length of the bike lane
- * `geometry`: geometry data, containing the grometric information of the bike lane. LINESTRING
+  * `name`: name of the street/road/avenue the bikelane located at
+  * `route_type`: the type of the route. in this project, they are all 'bike lane'
+  * `length`: the length of the bike lane
+  * `geometry`: geometry data, containing the grometric information of the bike lane. LINESTRING
 
 
 ## Results and key findings
