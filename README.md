@@ -7,7 +7,7 @@
 * Analysis of weather conditions to determine instances where collision likelihood increases; and
 * Assessment of the relationship between cycling infrastructures and collision occurrences to understand potential influences
 
-## Dataset
+## Dataset (datasets can be found in the [datasets](https://github.com/yuqiaochen-code/data_detectives_CME538/tree/e734f5feef779a45d4507c9a1abcbefd4a78e9a4/datasets) folder)
 
 * **Toronto Collision Map** is provided by [Toronto Police Service Public Safety Data Portal](https://data.torontopolice.on.ca/pages/cyclists) and contained traffic-related serious and fatal collisions involving cyclists from 2006 to 2022. Columns within the dataset are used in this data analysis are listed as follows.
   * `INDEX_`: unique identifier of each collision
