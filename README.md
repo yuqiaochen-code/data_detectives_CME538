@@ -71,6 +71,6 @@ The weather data was sampled every hour, so it is reasonable to input missing va
   Figures in the `figure` folder can all be reproduced using the code as shown in the links above.
   
 * Medium article link
-  For more details of our findings, as well as our interpretations, please see the Medium ariticle link 
+  For more details of our findings, as well as our interpretations, please visit our [Medium ariticle](https://medium.com/@yuqiaoc.chen/toronto-cyclists-collision-data-analysis-8896f317116d).
 
 
